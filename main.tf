@@ -6,7 +6,7 @@ provider "azurerm" {
 # ---------------- FRONTEND ----------------
 resource "azurerm_public_ip" "frontend" {
   name                = "frontend"
-  resource_group_name = " project-setup-1 "
+  resource_group_name = "project-setup-1"
   location            = " UK West "
   allocation_method   = "Static"
 }
