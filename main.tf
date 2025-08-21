@@ -3,11 +3,6 @@ provider "azurerm" {
   subscription_id = "323379f3-3beb-4865-821e-0fff68e4d4ca"
 }
 
-resource "azurerm_resource_group" "project-setup-1" {
-  name     = " project-setup-1 "
-  location = " UK West "
-}
-
 # ---------------- FRONTEND ----------------
 resource "azurerm_public_ip" "frontend" {
   name                = "frontend"
