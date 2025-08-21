@@ -7,7 +7,7 @@ provider "azurerm" {
 resource "azurerm_public_ip" "frontend" {
   name                = "frontend"
   resource_group_name = "project-setup-1"
-  location            = " UK West "
+  location            = "UK West"
   allocation_method   = "Static"
 }
 
@@ -25,9 +25,9 @@ resource "azurerm_network_interface" "frontend" {
 }
 
 resource "azurerm_virtual_machine" "frontend" {
-  name                  = " frontend "
-  location              = " UK West "
-  resource_group_name   = " project-setup-1 "
+  name                  = "frontend"
+  location              = "UK West"
+  resource_group_name   = "project-setup-1"
   network_interface_ids = [azurerm_network_interface.frontend.id]
   vm_size               = "Standard_B2s"
   
@@ -45,9 +45,9 @@ resource "azurerm_virtual_machine" "frontend" {
   }
 
   os_profile {
-    computer_name  = " frontend "
+    computer_name  = "frontend"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
   
   os_profile_linux_config {
@@ -57,8 +57,8 @@ resource "azurerm_virtual_machine" "frontend" {
 
 resource "azurerm_dns_a_record" "frontend" {
   name                = "frontend"
-  zone_name           = " omshiva.shop "
-  resource_group_name = " project-setup-1 "
+  zone_name           = "omshiva.shop"
+  resource_group_name = "project-setup-1"
   ttl                 = 3
   records             = azurerm_public_ip.frontend.id
 }
@@ -109,7 +109,7 @@ resource "azurerm_virtual_machine" "mongodb" {
   os_profile {
     computer_name  = "mongodb"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -172,7 +172,7 @@ resource "azurerm_virtual_machine" "catalogue" {
   os_profile {
     computer_name  = "catalogue"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -235,7 +235,7 @@ resource "azurerm_virtual_machine" "mysql" {
   os_profile {
     computer_name  = "mysql"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -298,7 +298,7 @@ resource "azurerm_virtual_machine" "redis" {
   os_profile {
     computer_name  = "redis"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -361,7 +361,7 @@ resource "azurerm_virtual_machine" "rabbitmq" {
   os_profile {
     computer_name  = "rabbitmq"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -424,7 +424,7 @@ resource "azurerm_virtual_machine" "user" {
   os_profile {
     computer_name  = "user"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -487,7 +487,7 @@ resource "azurerm_virtual_machine" "cart" {
   os_profile {
     computer_name  = "cart"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -550,7 +550,7 @@ resource "azurerm_virtual_machine" "shipping" {
   os_profile {
     computer_name  = "shipping"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
@@ -614,7 +614,7 @@ resource "azurerm_virtual_machine" "payment" {
   os_profile {
     computer_name  = "payment"
     admin_username = "azuser"
-    admin_password = "Dev@123456"
+    admin_password = "Dev@12345678"
   }
 
   os_profile_linux_config {
