@@ -1,6 +1,6 @@
 provider "azurerm" {
   features {}
-  subscription_id = "323379f3-3beb-4865-821e-0fff68e4d4ca"
+  subscription_id = "e0be8e24-25e7-4901-ad14-ea389c0f1289"
 }
 
 # ---------------- FRONTEND ----------------
@@ -18,7 +18,7 @@ resource "azurerm_network_interface" "frontend" {
 
   ip_configuration {
     name                          = "frontend"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.frontend.id
   }
@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "frontend" {
   delete_os_disk_on_termination = true
   
   storage_image_reference {
-  id = ""
+  id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -60,7 +60,7 @@ resource "azurerm_dns_a_record" "frontend" {
   zone_name           = " omshiva.shop "
   resource_group_name = " project-setup-1 "
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_public_ip.frontend.id
 }
 # ---------------- END FRONTEND ----------------
 
@@ -80,7 +80,7 @@ resource "azurerm_network_interface" "mongodb" {
 
   ip_configuration {
     name                          = "mongodb"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mongodb.id
   }
@@ -96,7 +96,7 @@ resource "azurerm_virtual_machine" "mongodb" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -122,7 +122,7 @@ resource "azurerm_dns_a_record" "mongodb" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.mongodb.id
 }
 
 # ---------------- END MONGODB ----------------
@@ -143,7 +143,7 @@ resource "azurerm_network_interface" "catalogue" {
 
   ip_configuration {
     name                          = "catalogue"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.catalogue.id
   }
@@ -159,7 +159,7 @@ resource "azurerm_virtual_machine" "catalogue" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -185,7 +185,7 @@ resource "azurerm_dns_a_record" "catalogue" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.catalogue.id
 }
 
 # ---------------- END CATALOGUE ----------------
@@ -206,7 +206,7 @@ resource "azurerm_network_interface" "mysql" {
 
   ip_configuration {
     name                          = "mysql"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mysql.id
   }
@@ -222,7 +222,7 @@ resource "azurerm_virtual_machine" "mysql" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -248,7 +248,7 @@ resource "azurerm_dns_a_record" "mysql" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.mysql.id
 }
 
 # ---------------- END MYSQL ----------------
@@ -269,7 +269,7 @@ resource "azurerm_network_interface" "redis" {
 
   ip_configuration {
     name                          = "redis"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.redis.id
   }
@@ -285,7 +285,7 @@ resource "azurerm_virtual_machine" "redis" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -311,7 +311,7 @@ resource "azurerm_dns_a_record" "redis" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.redis.id
 }
 
 # ---------------- END REDIS ----------------
@@ -332,7 +332,7 @@ resource "azurerm_network_interface" "rabbitmq" {
 
   ip_configuration {
     name                          = "rabbitmq"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.rabbitmq.id
   }
@@ -348,7 +348,7 @@ resource "azurerm_virtual_machine" "rabbitmq" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -374,7 +374,7 @@ resource "azurerm_dns_a_record" "rabbitmq" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.rabbitmq.id
 }
 
 # ---------------- END RABBITMQ ----------------
@@ -395,7 +395,7 @@ resource "azurerm_network_interface" "user" {
 
   ip_configuration {
     name                          = "user"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.user.id
   }
@@ -411,7 +411,7 @@ resource "azurerm_virtual_machine" "user" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -437,7 +437,7 @@ resource "azurerm_dns_a_record" "user" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.user.id
 }
 
 # ---------------- END USER ----------------
@@ -458,7 +458,7 @@ resource "azurerm_network_interface" "cart" {
 
   ip_configuration {
     name                          = "cart"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.cart.id
   }
@@ -474,7 +474,7 @@ resource "azurerm_virtual_machine" "cart" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -500,7 +500,7 @@ resource "azurerm_dns_a_record" "cart" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.cart.id
 }
 
 # ---------------- END CART ----------------
@@ -521,7 +521,7 @@ resource "azurerm_network_interface" "shipping" {
 
   ip_configuration {
     name                          = "shipping"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.shipping.id
   }
@@ -537,7 +537,7 @@ resource "azurerm_virtual_machine" "shipping" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -563,7 +563,7 @@ resource "azurerm_dns_a_record" "shipping" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.shipping.id
 }
 
 # ---------------- END SHIPPING ----------------
@@ -585,7 +585,7 @@ resource "azurerm_network_interface" "payment" {
 
   ip_configuration {
     name                          = "payment"
-    subnet_id                     = ""
+    subnet_id                     = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Network/virtualNetworks/test/subnets/default"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.payment.id
   }
@@ -601,7 +601,7 @@ resource "azurerm_virtual_machine" "payment" {
   delete_os_disk_on_termination = true
 
   storage_image_reference {
-    id = ""
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -627,7 +627,7 @@ resource "azurerm_dns_a_record" "payment" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = ["10.0.180.17"]
+  records             = azurerm_network_interface.payment.id
 }
 
 # ---------------- END PAYMENT ----------------
