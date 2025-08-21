@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "frontend" {
   delete_os_disk_on_termination = true
   
   storage_image_reference {
-  id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
+    id = "/subscriptions/e0be8e24-25e7-4901-ad14-ea389c0f1289/resourceGroups/project-setup-1/providers/Microsoft.Compute/images/local-devops-pratice"
   }
 
   storage_os_disk {
@@ -60,8 +60,9 @@ resource "azurerm_dns_a_record" "frontend" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_public_ip.frontend.id
+  records             = [azurerm_public_ip.frontend.ip_address]
 }
+
 # ---------------- END FRONTEND ----------------
 
 
@@ -122,7 +123,7 @@ resource "azurerm_dns_a_record" "mongodb" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.mongodb.id
+  records             = [azurerm_network_interface.mongodb.private_ip_address]
 }
 
 # ---------------- END MONGODB ----------------
@@ -185,7 +186,7 @@ resource "azurerm_dns_a_record" "catalogue" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.catalogue.id
+  records             = [azurerm_network_interface.catalogue.private_ip_address]
 }
 
 # ---------------- END CATALOGUE ----------------
@@ -248,7 +249,7 @@ resource "azurerm_dns_a_record" "mysql" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.mysql.id
+  records             = [azurerm_network_interface.mysql.private_ip_address]
 }
 
 # ---------------- END MYSQL ----------------
@@ -311,7 +312,7 @@ resource "azurerm_dns_a_record" "redis" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.redis.id
+  records             = [azurerm_network_interface.redis.private_ip_address]
 }
 
 # ---------------- END REDIS ----------------
@@ -374,7 +375,7 @@ resource "azurerm_dns_a_record" "rabbitmq" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.rabbitmq.id
+  records             = [azurerm_network_interface.rabbitmq.private_ip_address]
 }
 
 # ---------------- END RABBITMQ ----------------
@@ -437,7 +438,7 @@ resource "azurerm_dns_a_record" "user" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.user.id
+  records             = [azurerm_network_interface.user.private_ip_address]
 }
 
 # ---------------- END USER ----------------
@@ -500,7 +501,7 @@ resource "azurerm_dns_a_record" "cart" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.cart.id
+  records             = [azurerm_network_interface.cart.private_ip_address]
 }
 
 # ---------------- END CART ----------------
@@ -563,7 +564,7 @@ resource "azurerm_dns_a_record" "shipping" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.shipping.id
+  records             = [azurerm_network_interface.shipping.private_ip_address]
 }
 
 # ---------------- END SHIPPING ----------------
@@ -627,7 +628,7 @@ resource "azurerm_dns_a_record" "payment" {
   zone_name           = "omshiva.shop"
   resource_group_name = "project-setup-1"
   ttl                 = 3
-  records             = azurerm_network_interface.payment.id
+  records             = [azurerm_network_interface.payment.private_ip_address]
 }
 
 # ---------------- END PAYMENT ----------------
