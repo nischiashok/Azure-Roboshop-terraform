@@ -38,7 +38,7 @@ resource "azurerm_virtual_machine" "frontend" {
   }
 
   storage_os_disk {
-    name              = " frontend-disk"
+    name              = "frontend-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -533,7 +533,7 @@ resource "azurerm_virtual_machine" "shipping" {
   location              = "UK West"
   resource_group_name   = "project-setup-1"
   network_interface_ids = [azurerm_network_interface.shipping.id]
-  vm_size               = "Standard_B2s"
+  vm_size               = "Standard_B1s"
 
   delete_os_disk_on_termination = true
 
@@ -597,7 +597,7 @@ resource "azurerm_virtual_machine" "payment" {
   location              = "UK West"
   resource_group_name   = "project-setup-1"
   network_interface_ids = [azurerm_network_interface.payment.id]
-  vm_size               = "Standard_B2s"
+  vm_size               = "Standard_B1s"
 
   delete_os_disk_on_termination = true
 
